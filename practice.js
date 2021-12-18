@@ -70,13 +70,10 @@ var cookiesOnly = function(desserts) {
 
 // return the total price of all products.
 var sumTotal = function(products) {
-  console.log(products);
-  var output2 = _.reduce (products, function (memo, currentProduct, key) {
-    return (parseFloat(memo.price)) + (parseFloat(currentProduct.price));
-  });
-
-
-  return output2;
+  return _.reduce (products, function (memo, currentProduct) {
+    currentProduct.price.replace('$', '');
+    return memo + (Number(currentProduct.price.replace('$', '')));
+  }, 0);
 };
 
 // return an object consisting of dessert types and how many of each.
