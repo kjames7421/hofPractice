@@ -125,7 +125,18 @@ var ninetiesKid = function(movies) {
 // runtime than your time limit.
 // timeLimit is an integer representing a number of minutes.
 var movieNight = function(movies, timeLimit) {
-
+  //use reduce to go through list and update starting position
+  //set memoizer to false as starting position
+  return _.reduce(movies, function(memo, currentMovie) {
+    //check whether movie's runtime is shorter than timeLimit
+    if (currentMovie.runtime < timeLimit) {
+      //if such a movie exists update memo to true and return it
+      return memo = true;
+    }
+  //if reduce completes traversing then there must be no movie shorter than timeLimit
+    //in that case return memo/false
+    return memo;
+  }, false);
 };
 
 /*
