@@ -197,6 +197,17 @@ var glutenFree = function(desserts) {
   ];
 
 */
-var applyCoupon = function(groceries, coupon) {
 
+//use _.map to traverse gorceries array
+  //subtract coupon from each grocery item's price
+  //round the new price rounded to 2places (read articles on rounding)
+  //add the new price to the grocery item with a propertyname of salePrice
+
+var applyCoupon = function(groceries, coupon) {
+  _.map(groceries, function(currentGrocery) {
+    var currentPrice = Number(currentGrocery.price.replace('$', '')) * 100;
+    var newPrice = '$' + ((currentPrice * (1 - coupon)) / 100).toFixed(2).toString();
+    return currentGrocery.salePrice = newPrice;
+  });
+  return groceries;
 };
