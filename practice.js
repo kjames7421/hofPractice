@@ -147,8 +147,12 @@ var movieNight = function(movies, timeLimit) {
 
 // given an array of strings, use _.map to return a new array containing all
 // strings converted to uppercase letters.
+//use map to traverse fruits object
+  //transform each fruit to uppercase
 var upperCaseFruits = function(fruits) {
-
+  return _.map(fruits, function(aFruit) {
+    return aFruit.toUpperCase();
+  });
 };
 
 // given an array of dessert objects, return a new array of objects
