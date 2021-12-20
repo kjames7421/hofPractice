@@ -71,7 +71,6 @@ var cookiesOnly = function(desserts) {
 // return the total price of all products.
 var sumTotal = function(products) {
   return _.reduce (products, function (memo, currentProduct) {
-    currentProduct.price.replace('$', '');
     return memo + (Number(currentProduct.price.replace('$', '')));
   }, 0);
 };
@@ -79,14 +78,47 @@ var sumTotal = function(products) {
 // return an object consisting of dessert types and how many of each.
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
+  return _.reduce(desserts, function(memo, currentDessert) {
+    //
+    if (memo[currentDessert.type] === undefined) {
+      memo[currentDessert.type] = 1;
+    } else {
+      memo[currentDessert.type]++;
+    }
+    return memo;
+  }, {});
 
 };
+
+// var dessertCategories = function(desserts) {
+//   //var counter = 0;
+//   var dessertCount = {};
+//   //console.log(desserts);
+//   return _.reduce(desserts, function(memo, currentDessert) {
+//     if (memo.currentDessert.type > 0) {
+//       //return {currentDessert.type: (memo + 1)};
+//       memo.currentDessert.type++;
+//     } else {
+//       memo.currentDessert.type = 1;
+//     }
+//     //console.log('currentDessertType: ' + currentDessert.type);
+//     return memo;
+//   }, {});
+// };
 
 // given an array of movie data objects,return an array containing
 // movies that came out between 1990 and 2000.
 // TIP: use an array as your accumulator - don't push to an external array!
 var ninetiesKid = function(movies) {
-
+  return _.reduce(movies, function(memo, currentMovie) {
+    //check movies between 1990 and 2000 in memo
+    if (currentMovie.releaseYear >= 1990 && currentMovie.releaseYear <= 2000) {
+      //push movie to memo if it is between range
+      memo.push(currentMovie.title);
+    }
+    //return memo
+    return memo;
+  }, []);
 };
 
 // return an boolean stating if there exists a movie with a shorter
